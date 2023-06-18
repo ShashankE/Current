@@ -25,8 +25,11 @@ We ensured accuracy and reliabilty by using high-speed API's which would accurat
 One problem we have is that if the blockchain is congusted it increases our liabitity, if the currency begins to go lower than the buy price then it can difficult for us to make a profit off of transcations. To combat this our model will charge a percentage fee depending on the calculated risk factor of the transcation.
 
 # Research Links
-https://www.sciencedirect.com/science/article/pii/S2666285X21000923
-https://www.wisdomtree.eu/-/media/eu-media-files/other-documents/research/market-insights/market-insight-bitcoin-vs-traditional-payment.pdf
-https://www.investopedia.com/news/does-blockchains-popularity-mean-end-swift/
-https://www.econstor.eu/bitstream/10419/266847/1/1141.pdf
+* https://www.sciencedirect.com/science/article/pii/S2666285X21000923
+
+* https://www.wisdomtree.eu/-/media/eu-media-files/other-documents/research/market-insights/market-insight-bitcoin-vs-traditional-payment.pdf
+
+* https://www.investopedia.com/news/does-blockchains-popularity-mean-end-swift/
+
+* https://www.econstor.eu/bitstream/10419/266847/1/1141.pdf
 
