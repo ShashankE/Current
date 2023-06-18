@@ -1,164 +1,235 @@
-<!DOCTYPE html>
 <html>
-    <head>
-      <script src="login.html"></script>
-      <title>Currency Converter</title>
-        <style>
-    body {
-      background-color: #f5f5f5;
-      color: #333333;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-    
-    .currency-converter {
-      max-width: 600px;
-      padding: 40px;
-      background-color: #ffffff;
-      box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
-      border-radius: 8px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    
-    .currency-converter h2 {
-      text-align: center;
-      margin-top: 0;
-      margin-bottom: 20px;
-      color: #555555;
-    }
-    
-    .input-container {
-      width: 100%;
-      margin-bottom: 16px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    
-    .input-container label {
-      display: block;
-      font-weight: bold;
-      color: #555555;
-      text-align: center;
-    }
-    
-    .input-container input[type="text"],
-    .input-container input[type="number"] {
-      width: 80%;
-      max-width: 300px;
-      padding: 10px;
-      font-size: 16px;
-      border-radius: 4px;
-      border: 1px solid #dddddd;
-      background-color: #f8f8f8;
-      color: #333333;
-    }
-    
-    #convert-btn {
-      display: block;
-      width: 80%;
-      max-width: 300px;
-      padding: 10px;
-      font-size: 16px;
-      text-align: center;
-      background-color: #4caf50;
-      color: #ffffff;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-    
-    .result-container {
-      margin-top: 20px;
-      padding: 10px;
-      background-color: #f5f5f5;
-      border-radius: 4px;
-      text-align: center;
-      color: #333333;
-      font-size: 16px;
-      line-height: 1.4;
-      box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
-    }
-      </style>
+<head>
+  <title>Make a Transaction</title>
+  <link rel="icon" type="image/x-icon" style = "border-radius: 50%; overflow: hidden;" href="images/logo.png">
+    <style>
+body {
+  color: #333333;
+  text-align: center;
+  height: 100vh;
+  font-family: Helvetica, sans-serif;
+  overflow: hidden;
+}
 
-    <script>
-        window.onload = function() {
-        var username = localStorage.getItem('username');
-        var password = localStorage.getItem('password');
+.currency-converter {
+    margin-left: 40%;
+    margin-right: 40%;
+    margin-top: 6%;
+    width 20%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+  background-color: #ffffff;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-        if (username && password) {
-            alert('Username: ' + username + '\nPassword: ' + password);
-        } else {
-            alert('No account found.');
-        }
-        };
-    </script>
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,400i,700&display=swap">
-    </head>
-    <body>
-      <div class="currency-converter">
-        <h2>Currency Converter</h2>
-        <div class="input-container">
-          <label for="from-currency">From:</label>
-          <input type="text" id="from-currency" placeholder="Enter currency code (e.g., USD)">
-        </div>
-        <div class="input-container">
-          <label for="amount">Amount:</label>
-          <input type="number" id="amount" placeholder="Enter amount">
-        </div>
-        <div class="input-container">
-          <label for="to-currency">To:</label>
-          <input type="text" id="to-currency" placeholder="Enter currency code (e.g., EUR)">
-        </div>
-        <button id="convert-btn">Convert</button>
-        <div id="result-container"></div>
+.currency-converter h2 {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #555555;
+}
+
+.input-container {
+  width: 100%;
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.input-container label {
+  display: block;
+  font-weight: bold;
+  color: #555555;
+  text-align: center;
+}
+
+.input-container input[type="text"],
+.input-container input[type="number"] {
+  width: 80%;
+  max-width: 300px;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 4px;
+  border: 1px solid #dddddd;
+  background-color: #f8f8f8;
+  color: #333333;
+}
+
+#convert-btn {
+  display: block;
+  width: 80%;
+  max-width: 300px;
+  padding: 10px;
+  font-size: 16px;
+  text-align: center;
+  background-color: #4caf50;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.result-container {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #f5f5f5;
+  border-radius: 4px;
+  text-align: center;
+  color: #333333;
+  font-size: 16px;
+  line-height: 1.4;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+}
+.univ {
+	position: absolute;
+  background: linear-gradient(45deg, #9ae7aa, #557eee);
+  border-radius: 45px;
+  top: 12%;
+  left: 80%;
+  width: 160%;
+  height: 80%;
+  transform: skew(20deg);
+  z-index: -1;
+}
+
+.unive {
+	position: absolute;
+  background: linear-gradient(45deg, #9ae7aa, #557eee);
+  border-radius: 45px;
+  top: 22%;
+  right: 80%;
+  width: 160%;
+  height: 80%;
+  transform: skew(20deg);
+  z-index: -1;
+}
+h1 {font-size:400%; color: #242424; font-weight: 900; font-family: 'Roboto', Helvetica, sans-serif;}
+  </style>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,400i,700&display=swap">
+</head>
+<body>
+    <h1 style="margin-left: 30%; width: 40%;">Make a Transaction</h1>
+    <h3>Account: testAccount</h3>
+    <h4 id = "balance">Balance: 10000</h4>
+  <div class="currency-converter">
+    <h2>Currency Exchanger</h2>
+    <div class="input-container">
+        <label for="amount">You exchange:</label>
+        <input type="number" id="amount" placeholder="Enter amount">
+      </div>
+    <div class="input-container">
+      <label for="from-currency">in:</label>
+      <input type="text" id="from-currency" placeholder="Enter currency code (e.g., USD)">
+    </div>
+    
+
+    <div class="input-container">
+      <label for="to-currency">for:</label>
+      <input type="text" id="to-currency" placeholder="Enter currency code (e.g., EUR)">
+    </div>
+
+    <div class="input-container">
+        <label for="to-currency">to:</label>
+        <input type="text" id="to-user" placeholder="Enter recipient's username">
       </div>
     
-      <h1>Welcome, <span id="username"></span>!</h1>
+    <button id="convert-btn">Send</button>
+    
+    <div id="exchange-rate"></div>
+  </div>
+  <div id="result-container"></div>
+    <script>
+    // JavaScript code here
+    const convertBtn = document.getElementById('convert-btn');
+    const resultContainer = document.getElementById('result-container');
+    const exchangeRate = document.getElementById('exchange-rate');
+    convertBtn.addEventListener('click', () => {
+      const fromCurrencyInput = document.getElementById('from-currency');
+      const amountInput = document.getElementById('amount');
+      const toCurrencyInput = document.getElementById('to-currency');
+      const toUserInput = document.getElementById('to-user').value;
+      const fromCurrency = fromCurrencyInput.value;
+      const amount = amountInput.value;
+      const balance = document.getElementById('balance');
+      balance.textContent = `Balance ${10000-amount}`;
+      const toCurrency = toCurrencyInput.value;
 
-      <script>
-        // Access the user object in dashboard.html
-        document.getElementById("username").textContent = loggedInUser.name;
-      </script>
+      if (fromCurrency && amount && toCurrency) {
+        const requestURL = `https://api.exchangerate.host/convert?from=${fromCurrency}&to=${toCurrency}&amount=${amount}`;
 
-        <script>
-        // JavaScript code here
-        const convertBtn = document.getElementById('convert-btn');
-        const resultContainer = document.getElementById('result-container');
-    
-        convertBtn.addEventListener('click', () => {
-          const fromCurrencyInput = document.getElementById('from-currency');
-          const amountInput = document.getElementById('amount');
-          const toCurrencyInput = document.getElementById('to-currency');
-    
-          const fromCurrency = fromCurrencyInput.value;
-          const amount = amountInput.value;
-          const toCurrency = toCurrencyInput.value;
-    
-          if (fromCurrency && amount && toCurrency) {
-            const requestURL = `https://api.exchangerate.host/convert?from=${fromCurrency}&to=${toCurrency}&amount=${amount}`;
-    
-            fetch(requestURL)
-              .then(response => response.json())
-              .then(data => {
-                const convertedAmount = data.result.toFixed(2);
-                resultContainer.textContent = `${amount} ${fromCurrency} = ${convertedAmount} ${toCurrency}`;
-              })
-              .catch(error => {
-                resultContainer.textContent = 'An error occurred. Please try again later.';
-                console.error(error);
-              });
-          } else {
-            resultContainer.textContent = 'Please enter values in all fields.';
-          }
-        });
-
+        fetch(requestURL)
+          .then(response => response.json())
+          .then(data => {
+            const convertedAmount = data.result.toFixed(2);
+            resultContainer.textContent = `${toUserInput} has recieved ${convertedAmount} ${toCurrency} (${amount} ${fromCurrency})`;
+            exchangeRate.textContent = `1 ${fromCurrency} = ${convertedAmount/amount} ${toCurrency}`;
+          })
+          .catch(error => {
+            resultContainer.textContent = 'An error occurred. Please try again later.';
+            console.error(error);
+          });
+      } else {
+        resultContainer.textContent = 'Please enter values in all fields.';
+      }
+    });
+  </script>
+  <label for="to">Crypto rates to demonstrate functionality, would be hidden from user:</label>
+  <label for="amount">Amount:</label>
+  <input type="number" id="amount" placeholder="Enter amount">
+  <label for="from">From:</label>
+  <select id="from">
+    <option value="XRP">XRP</option>
+    <option value="BTC">BTC</option>
+    <option value="USD">USD</option>
+    <option value="EUR">EUR</option>
+  </select>
+  <label for="to">To:</label>
+  <select id="to">
+    <option value="USD">USD</option>
+    <option value="EUR">EUR</option>
+    <option value="XRP">XRP</option>
+    <option value="BTC">BTC</option>
+  </select>
+  <button onclick="convertCurrency()">Convert</button>
+  
+  <div id="result"></div>
+  
+  <script>
+    function convertCurrency() {
         
-      </script>
-    
-    </body>
-</head>
+      var amount = document.getElementById('amount').value;
+      var fromCurrency = document.getElementById('from').value;
+      var toCurrency = document.getElementById('to').value;
+  
+      if (amount === '') {
+        alert('Please enter an amount.');
+        return;
+      }
+  
+      var url = `https://api.coinconvert.net/convert/${fromCurrency}/${toCurrency}?amount=${amount}`;
+  
+      fetch(url)
+        .then(response => response.text())
+        .then(data => {
+          const start = data.lastIndexOf(':')+1;
+    const end = data.lastIndexOf('}');
+    const result = data.substring(start, end); // Updated line
+          var output = `${amount} ${fromCurrency} = ${result} ${toCurrency}`;
+          document.getElementById('result').textContent = output;
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    }
+  </script>
+<div class="univ"></div>
+<div class="unive"></div>
+</body>
+</html>
+
+
