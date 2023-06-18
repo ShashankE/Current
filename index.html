@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- displays site properly based on user's device -->
+    <title>Current</title>
+    <link rel="icon" type="image/x-icon" href="images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap" rel="stylesheet">
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      body {
+        font-family: Helvetica, sans-serif;
+      }
+
+      /* Full-width input fields */
+      input[type=text],
+      input[type=password] {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+      }
+
+      /* Set a style for all buttons */
+      button {
+        background-color: #04AA6D;
+        color: white;
+        padding: 14px 20px;
+        font-family: Helvetica, sans-serif;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+      }
+
+      button:hover {
+        opacity: 0.8;
+      }
+
+      /* Extra styles for the cancel button */
+      .cancelbtn {
+        width: auto;
+        padding: 10px 18px;
+        background-color: #f44336;
+      }
+
+      /* Center the image and position the close button */
+      .imgcontainer {
+        text-align: center;
+        margin: 24px 0 12px 0;
+        position: relative;
+      }
+
+      img.avatar {
+        width: 40%;
+        border-radius: 50%;
+      }
+
+      .logincontainer {
+        padding: 16px;
+      }
+
+      .buttoncontainer {
+        text-align: center;
+      }
+
+      /* The Modal (background) */
+      .modal {
+        display: none;
+        /* Hidden by default */
+        position: fixed;
+        /* Stay in place */
+        z-index: 1;
+        /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%;
+        /* Full width */
+        height: 100%;
+        /* Full height */
+        overflow: auto;
+        /* Enable scroll if needed */
+        background-color: rgb(0, 0, 0);
+        /* Fallback color */
+        background-color: rgba(0, 0, 0, 0.4);
+        /* Black w/ opacity */
+        padding-top: 60px;
+      }
+
+      /* Modal Content/Box */
+      .modal-content {
+        background-color: #fefefe;
+        border-radius: 25px;
+        font-family: Helvetica, sans-serif;
+        margin: 5% auto 15% auto;
+        /* 5% from the top, 15% from the bottom and centered */
+        border: 1px solid #888;
+        width: 40%;
+        /* Could be more or less, depending on screen size */
+      }
+
+      /* The Close Button (x) */
+      .close {
+        position: absolute;
+        right: 25px;
+        top: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        color: #000;
+        font-size: 35px;
+        font-weight: bold;
+      }
+
+      .close:hover,
+      .close:focus {
+        color: red;
+        cursor: pointer;
+      }
+
+      /* Add Zoom Animation */
+      .animate {
+        -webkit-animation: animatezoom 0.6s;
+        animation: animatezoom 0.6s
+      }
+
+      @-webkit-keyframes animatezoom {
+        from {
+          -webkit-transform: scale(0)
+        }
+
+        to {
+          -webkit-transform: scale(1)
+        }
+      }
+
+      @keyframes animatezoom {
+        from {
+          transform: scale(0)
+        }
+
+        to {
+          transform: scale(1)
+        }
+      }
+
+      .navbar {
+        font-family: 'Roboto', Helvetica, sans-serif;
+        height: 5%;
+        display: flex;
+        align-items: center;
+        padding-left: 1%;
+        padding-right: 1%;
+      }
+
+      .logo {
+        border-radius: 50%;
+        height: 3%;
+        width: 3%;
+        position: relative;
+        transform-style: preserve-3d;
+        transition: transform 1.5s;
+      }
+
+      nav {
+        flex: 1;
+        text-align: right;
+      }
+
+      .logo:hover {
+        transform: rotateY(360deg);
+      }
+
+      nav ul li {
+        list-style: none;
+        display: inline-block;
+        margin-left: 60px;
+      }
+
+      h1 {
+        font-size: 400%;
+        color: #242424;
+        font-weight: 900;
+        font-family: 'Roboto', Helvetica, sans-serif;
+      }
+
+      h6 {
+        color: #777777;
+        font-weight: 400;
+        font-size: larger;
+      }
+
+      .chunk {
+        text-align: center;
+        padding: 1%;
+      }
+
+      .uni {
+        position: absolute;
+        top: -25%;
+        left: 5%;
+        background: linear-gradient(45deg, #ffd79b, #6300e4);
+        border-radius: 50%;
+        width: 500%;
+        height: 100%;
+        z-index: -1;
+      }
+
+      .unit {
+        position: absolute;
+        top: 30%;
+        right: 25%;
+        background: linear-gradient(45deg, #ff9900, #cdaff1dc);
+        border-radius: 50%;
+        width: 400%;
+        height: 70%;
+        z-index: -1;
+      }
+
+      .currency-converter {
+        margin: 10%;
+        max-width: 600px;
+        padding: 40px;
+        background-color: #ffffff;
+        box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .currency-converter h2 {
+        text-align: center;
+        margin-top: 0;
+        margin-bottom: 20px;
+        color: #555555;
+      }
+
+      .input-container {
+        width: 100%;
+        margin-bottom: 16px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .input-container label {
+        display: block;
+        font-weight: bold;
+        color: #555555;
+        text-align: center;
+      }
+
+      .input-container input[type="text"],
+      .input-container input[type="number"] {
+        width: 80%;
+        max-width: 300px;
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 4px;
+        border: 1px solid #dddddd;
+        background-color: #f8f8f8;
+        color: #333333;
+      }
+
+      #convert-btn {
+        display: block;
+        width: 80%;
+        max-width: 300px;
+        padding: 10px;
+        font-size: 16px;
+        text-align: center;
+        background-color: #4caf50;
+        color: #ffffff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      .result-container {
+        margin-top: 20px;
+        padding: 10px;
+        background-color: #f5f5f5;
+        border-radius: 4px;
+        text-align: center;
+        color: #333333;
+        font-size: 16px;
+        line-height: 1.4;
+        box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .currency-container {
+        background-color: #ffffffb7;
+        color: #333333;
+        border-radius: 25px;
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        margin: 20%;
+        margin-top: 25%;
+        margin-bottom: 10%;
+      }
+
+      .univ {
+        position: absolute;
+        background: linear-gradient(45deg, #9ae7aa, #557eee);
+        border-radius: 45px;
+        top: 92%;
+        left: 80%;
+        width: 160%;
+        height: 80%;
+        transform: skew(20deg);
+        z-index: -1;
+      }
+
+      .unive {
+        position: absolute;
+        background: linear-gradient(45deg, #9ae7aa, #557eee);
+        border-radius: 45px;
+        top: 102%;
+        right: 80%;
+        width: 160%;
+        height: 80%;
+        transform: skew(20deg);
+        z-index: -1;
+      }
+    </style>
+    <script>
+      function handleLinkClick(event) {
+        isLoggedIn = false;
+        if (!isLoggedIn) {
+          event.preventDefault();
+          document.getElementById('id01').style.display = 'block';
+        }
+      }
+      var log = document.getElementById('id01');
+      var sign = document.getElementById('id02');
+      // When the user clicks outside of the popup, close it
+      window.onclick = function(event) {
+        if (event.target == log || event.target == sign) {
+          log.style.display = "none";
+          sign.style.display = "none";
+        }
+      }
+      //Needs Deepl key to function
+      function translateContent() {
+        const targetLang = $('#language-selector').val();
+        const elementsToTranslate = $('body').find('*').contents().filter(function() {
+          return this.nodeType === Node.TEXT_NODE && $.trim(this.nodeValue) !== '';
+        });
+        elementsToTranslate.each(function() {
+          const originalText = this.nodeValue;
+          $.ajax({
+            url: 'https://api.deepl.com/v2/translate',
+            type: 'POST',
+            dataType: 'json',
+            data: {
+              //Deepl key here
+              auth_key: '',
+              text: originalText,
+              target_lang: targetLang
+            },
+            success: function(response) {
+              const translatedText = response.translations[0].text;
+              $(elementsToTranslate).each(function() {
+                if (this.nodeValue === originalText) {
+                  this.nodeValue = translatedText;
+                }
+              });
+            },
+            error: function(error) {
+              console.log(error);
+            }
+          });
+        });
+      }
+      $('#language-selector').change(translateContent);
+      translateContent();
+      const convertBtn = document.getElementById('convert-btn');
+      const resultContainer = document.getElementById('result-container');
+      convertBtn.addEventListener('click', () => {
+        const fromCurrencyInput = document.getElementById('from-currency');
+        const amountInput = document.getElementById('amount');
+        const toCurrencyInput = document.getElementById('to-currency');
+        const fromCurrency = fromCurrencyInput.value;
+        const amount = amountInput.value;
+        const toCurrency = toCurrencyInput.value;
+        if (fromCurrency && amount && toCurrency) {
+          const requestURL = `https://api.exchangerate.host/convert?from=${fromCurrency}&to=${toCurrency}&amount=${amount}`;
+          fetch(requestURL).then(response => response.json()).then(data => {
+            const convertedAmount = data.result.toFixed(2);
+            resultContainer.textContent = `${amount} ${fromCurrency} = ${convertedAmount} ${toCurrency}`;
+          }).catch(error => {
+            resultContainer.textContent = 'An error occurred. Please try again later.';
+            console.error(error);
+          });
+        } else {
+          resultContainer.textContent = 'Please enter values in all fields.';
+        }
+      });
+
+      function createAccount() {
+        var username = document.getElementById('username').value;
+        var password = document.getElementById('password').value;
+        if (username && password) {
+          // Save the username and password to localStorage
+          localStorage.setItem('username', username);
+          localStorage.setItem('password', password);
+          alert('Account created successfully!');
+        } else {
+          alert('Please enter a username and password.');
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="uni"></div>
+    <div class="unit"></div>
+    <div class="navbar">
+      <img src="images/logo.png" class="logo">
+      <nav>
+        <ul>
+          <li>
+            <select style="background-color: #ffffff00;
+          font-family: 'Roboto', Helvetica, sans-serif;
+            color: #242424;
+            border: none;
+            cursor: pointer;" id="language-selector">
+              <option value="EN">English</option>
+              <option value="CH">Chinese</option>
+              <option value="FR">French</option>
+              <option value="ES">Spanish</option>
+            </select>
+          </li>
+          <li>
+            <a href="transaction.html" onclick="handleLinkClick(event)">Make a Transaction</a>
+          </li>
+        </ul>
+      </nav>
+      <button onclick="document.getElementById('id01').style.display='block'" style="border-radius: 25px; margin-left: 3%;">Login</button>
+      <button onclick="document.getElementById('id02').style.display='block'" style="border-radius: 25px; margin-left: 2%;">Sign Up</button>
+    </div>
+    <div id="id01" class="modal">
+      <form class="modal-content animate" action="transaction.html" method="post">
+        <div class="imgcontainer">
+          <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+          <img src="images/login.png" alt="Avatar" class="avatar">
+        </div>
+        <div class="logincontainer">
+          <label for="uname">
+            <b>Username</b>
+          </label>
+          <input type="text" placeholder="Enter Username" name="uname" required>
+          <label for="psw">
+            <b>Password</b>
+          </label>
+          <input type="password" placeholder="Enter Password" name="psw" required>
+          <div class="buttoncontainer">
+            <button type="submit" style="width:50%; border-radius:25px;">Login</button>
+          </div>
+        </div>
+        <div class="logincontainer" style="background-color:#f1f1f1; border-radius: 0px 0px 25px 25px;">
+          <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+        </div>
+      </form>
+    </div>
+    <div id="id02" class="modal">
+      <form class="modal-content animate" action="transaction.html" method="post">
+        <div class="imgcontainer">
+          <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+          <img src="images/login.png" alt="Avatar" class="avatar">
+        </div>
+        <div class="logincontainer">
+          <label for="uname">
+            <b>Username</b>
+          </label>
+          <input type="text" id="username" placeholder="Create Username" name="uname" required>
+          <label for="psw">
+            <b>Password</b>
+          </label>
+          <input type="password" id="password" placeholder="Create Password" name="psw" required>
+          <div class="buttoncontainer">
+            <button type="submit" style="width:50%; border-radius:25px;">Sign Up</button>
+          </div>
+        </div>
+        <div class="logincontainer" style="background-color:#f1f1f1; border-radius: 0px 0px 25px 25px;">
+          <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
+        </div>
+      </form>
+    </div>
+    <div class="chunk">
+      <h1 style="margin-left: 30%; width: 40%;">Cheaper, Faster, Better</h1>
+      <h6 style="margin-left: 35%; width: 30%;">Make high-speed international transactions at affordable rates at the press of a button. Experience priority with Current.</h6>
+    </div>
+    <div class="currency-container">
+      <div class="currency-converter">
+        <h2>Currency Converter</h2>
+        <div class="input-container">
+          <label for="from-currency">From:</label>
+          <input type="text" id="from-currency" placeholder="Enter currency code (e.g., USD)">
+        </div>
+        <div class="input-container">
+          <label for="amount">Amount:</label>
+          <input type="number" id="amount" placeholder="Enter amount">
+        </div>
+        <div class="input-container">
+          <label for="to-currency">To:</label>
+          <input type="text" id="to-currency" placeholder="Enter currency code (e.g., EUR)">
+        </div>
+        <button id="convert-btn">Convert</button>
+        <div id="result-container"></div>
+      </div>
+      <div style="margin-left: 5%; text-align: center;" class="text">
+        <h1>Try it now</h1>
+        <h6>See ForEx currency rates with the click of a button! Current guarantees your transaction to be as near to that rate as feasible, closer than any bank can offer.
+        </h6>
+      </div>
+    </div>
+    <div class="univ"></div>
+    <div class="unive"></div>
+  </body>
+</html>
