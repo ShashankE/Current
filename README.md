@@ -1,4 +1,4 @@
-# Current
+# Current ~ International Transactions Made Easier.
 
 # Core Technical Implementation
 
