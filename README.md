@@ -2,7 +2,7 @@
 
 # Core Technical Implementation
 
-Created 
+Our Proof of Concept encompasses our customer facing product development by using high speed API's which most accurately show customers how our product will save them money and time compared to a large majority of international wire transfers sponsored by SWIFT banking services. Our product allows for customers to see the entire horizontal process and see the entry and exit price of the transcation be satisfied by the quick transaction times compared to our competitors in te market.
 
 # Architecture 
 
